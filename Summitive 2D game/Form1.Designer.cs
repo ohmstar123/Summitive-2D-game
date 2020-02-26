@@ -33,7 +33,7 @@
             // 
             // playButton
             // 
-            this.playButton.Location = new System.Drawing.Point(295, 154);
+            this.playButton.Location = new System.Drawing.Point(490, 271);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(235, 121);
             this.playButton.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1203, 663);
             this.Controls.Add(this.playButton);
             this.Name = "Form1";
             this.Text = "Form1";

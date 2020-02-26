@@ -12,13 +12,23 @@ namespace Summitive_2D_game
 {
     public partial class Form1 : Form
     {
+        GameScreen gs = new GameScreen();
+
+
         public Form1()
         {
             InitializeComponent();
+            this.Controls.Add(gs);
+            
+            
+            
+           
+            
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            
 
         }
     }
