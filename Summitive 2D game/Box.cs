@@ -9,7 +9,7 @@ namespace Summitive_2D_game
 {
     class Box
     {
-        public SolidBrush boxBrush;
+        public SolidBrush boxBrush = new SolidBrush(Color.White);
         public int x, y, sizeX, sizeY;
 
         public Box (SolidBrush _boxBrush, int _x, int _y, int _sizeX, int _sizeY)
@@ -21,10 +21,17 @@ namespace Summitive_2D_game
             boxBrush = _boxBrush;
         }
 
-        public void Fall()
+        public void FallRight()
         {
-            //TODO - Make the enemies fall either right or left
+            //Make the enemies fall right
+            x = x + 3;
 
+        }
+
+        public void FallLeft()
+        {
+            //Make the enemies fall left
+            x = x - 3;
         }
 
         public void Move(string direction)

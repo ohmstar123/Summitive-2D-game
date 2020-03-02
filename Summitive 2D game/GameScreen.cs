@@ -32,7 +32,16 @@ namespace Summitive_2D_game
         //TODO - Variables used to draw the enemies
 
 
-        //TODO - Create a counter variable
+        //Player 1 values
+        Box player1;
+
+
+        //Player 2 values
+        Box player2;
+
+        //Create a counter variable
+        int counter;
+        
 
         public GameScreen()
         {
@@ -44,6 +53,14 @@ namespace Summitive_2D_game
         public void OnStart()
         {
             //TODO - Get game start values
+            Box one = new Box(whiteBrush, 4, 100, 10, 2);
+            enemyLeft.Add(one);
+
+            Box two = new Box(whiteBrush, 500, 100, 10, 2);
+            enemyRight.Add(two);
+
+            player1 = new Box(whiteBrush, 200, 400, 4, 10);
+            player2 = new Box(whiteBrush, 600, 400, 4, 10);
 
         }
 
@@ -88,6 +105,15 @@ namespace Summitive_2D_game
         private void gameLoop_Tick(object sender, EventArgs e)
         {
             //TODO - update location of all boxes (Left list goes right & Right list goes left)
+            foreach (Box left in enemyLeft)
+            {
+                left.FallRight();
+            }
+
+            foreach (Box right in enemyRight)
+            {
+                right.FallLeft();
+            }
 
 
             //TODO - remove box if it has gone of screen (Either off the right side or the left side)
@@ -114,13 +140,21 @@ namespace Summitive_2D_game
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             //TODO - Draw Enemies on the screen
+            foreach (Box l in enemyLeft)
+            {
+                e.Graphics.FillRectangle(l.boxBrush, l.x, l.y, l.sizeX, l.sizeY);
+            }
 
+            foreach (Box r in enemyRight)
+            {
+                e.Graphics.FillRectangle(r.boxBrush, r.x, r.y, r.sizeX, r.sizeY);
+            }
 
             //TODO - Draw Player1 to the screen
-
+            e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY);
 
             //TODO - Draw Player2 to the screen
-
+            e.Graphics.FillRectangle(player2.boxBrush, player2.x, player2.y, player2.sizeX, player2.sizeY);
         }
     }
 }
