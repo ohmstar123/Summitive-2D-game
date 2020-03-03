@@ -12,14 +12,14 @@ namespace Summitive_2D_game
 {
     public partial class GameScreen : UserControl
     {
-        //Player1 controls 
+        //Player2 controls 
         Boolean upArrowDown, downArrowDown;
 
-        //Player2 controls
+        //Player1 controls
         Boolean wKeyDown, sKeyDown;
 
         //TODO - Set up the random number generator for locations of enemies later on
-
+        Random randgen = new Random();
 
         //Brushes to draw with
         SolidBrush whiteBrush = new SolidBrush(Color.White);
@@ -30,7 +30,8 @@ namespace Summitive_2D_game
         List<Box> enemyRight = new List<Box>();
 
         //TODO - Variables used to draw the enemies
-
+        int randomYLeft;
+        int randomYRight;
 
         //Player 1 values
         Box player1;
@@ -52,15 +53,20 @@ namespace Summitive_2D_game
 
         public void OnStart()
         {
-            //TODO - Get game start values
-            Box one = new Box(whiteBrush, 4, 100, 10, 2);
+            //Get game start values
+            randomYRight = randgen.Next(1, 391);
+            randomYLeft = randgen.Next(1, 391);
+
+            Box one = new Box(whiteBrush, 4, randomYLeft, 10, 2);
             enemyLeft.Add(one);
 
-            Box two = new Box(whiteBrush, 500, 100, 10, 2);
+            Box two = new Box(whiteBrush, this.Width, randomYRight, 10, 2);
             enemyRight.Add(two);
 
             player1 = new Box(whiteBrush, 200, 400, 4, 10);
             player2 = new Box(whiteBrush, 600, 400, 4, 10);
+
+       
 
         }
 
@@ -104,7 +110,11 @@ namespace Summitive_2D_game
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
-            //TODO - update location of all boxes (Left list goes right & Right list goes left)
+            //Create a random y value for the enemies
+            randomYLeft = randgen.Next(1, 391);
+            randomYRight = randgen.Next(1, 391);
+
+            //update location of all boxes (Left list goes right & Right list goes left)
             foreach (Box left in enemyLeft)
             {
                 left.FallRight();
@@ -116,30 +126,80 @@ namespace Summitive_2D_game
             }
 
 
-            //TODO - remove box if it has gone of screen (Either off the right side or the left side)
+            //remove box if it has gone of screen (Either off the right side or the left side)
+            if (enemyRight[0].x < -enemyRight[0].sizeX)
+            {
+                enemyRight.RemoveAt(0);
+            }
+
+            if (enemyLeft[0].x > this.Width)
+            {
+                enemyLeft.RemoveAt(0);
+            }
+
+            //add new box if it is time
+            counter++;
+            if (counter == 5)
+            {
 
 
-            //TODO - add new box if it is time
+                Box Left = new Box(whiteBrush, 4, randomYLeft, 10, 2);
+                enemyLeft.Add(Left);
+
+                Box Right = new Box(whiteBrush, this.Width, randomYRight, 10, 2);
+                enemyRight.Add(Right);
+
+                counter = 0;
+            }
+
+            //Move player1 Up and Down
+            if (upArrowDown)
+            {
+                player2.Move("Up");
+            }
+
+            if (downArrowDown)
+            {
+                player2.Move("Down");
+            }
+
+            //Move player2 Up and Down
+            if (wKeyDown)
+            {
+                player1.Move("Up");
+            }
+
+            if (sKeyDown)
+            {
+                player1.Move("Down");
+            }
 
 
-            //TODO - Move player1 Up and Down
+            //Check for collision between player1 and enemies
+            foreach (Box enemy1 in enemyLeft.Union(enemyRight))
+            {
+                if (enemy1.Collision1(player1))
+                {
+                    player1 = new Box(whiteBrush, 200, 400, 4, 10);
+                }
+            }
 
 
-            //TODO - Move player1 Up and Down
-
-
-            //TODO - Check for collision between player1 and enemies
-
-
-            //TODO - Check for collision between player2 and enemies
-
+            //Check for collision between player2 and enemies
+            foreach (Box enemy2 in enemyRight.Union(enemyLeft))
+            {
+                if (enemy2.Collision2(player2))
+                {
+                    player2 = new Box(whiteBrush, 600, 400, 4, 10);
+                }
+            }
 
             Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            //TODO - Draw Enemies on the screen
+            //Draw Enemies on the screen
             foreach (Box l in enemyLeft)
             {
                 e.Graphics.FillRectangle(l.boxBrush, l.x, l.y, l.sizeX, l.sizeY);
@@ -150,10 +210,12 @@ namespace Summitive_2D_game
                 e.Graphics.FillRectangle(r.boxBrush, r.x, r.y, r.sizeX, r.sizeY);
             }
 
-            //TODO - Draw Player1 to the screen
+            //Draw Player1 to the screen
+            
             e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY);
-
-            //TODO - Draw Player2 to the screen
+                
+            
+            //Draw Player2 to the screen
             e.Graphics.FillRectangle(player2.boxBrush, player2.x, player2.y, player2.sizeX, player2.sizeY);
         }
     }

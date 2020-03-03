@@ -36,11 +36,48 @@ namespace Summitive_2D_game
 
         public void Move(string direction)
         {
-            //TODO - Movement of the players depending what button is pressed
+            //Movement of the players depending what button is pressed
+            if (direction == "Up")
+            {
+                y = y - 3;
+            }
+
+            if (direction == "Down")
+            {
+                y = y + 3;
+            }
         }
 
         //TODO - Need a method for collision between the players and the enemies
+        public Boolean Collision1(Box player1)
+        {
+            Rectangle player1Rec = new Rectangle(player1.x, player1.y, player1.sizeX, player1.sizeY);
+            Rectangle enemyRec = new Rectangle(x, y, sizeX, sizeY);
 
+            if (player1Rec.IntersectsWith(enemyRec))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean Collision2(Box player2)
+        {
+            Rectangle player2Rec = new Rectangle(player2.x, player2.y, player2.sizeX, player2.sizeY);
+            Rectangle enemyRec = new Rectangle(x, y, sizeX, sizeY);
+
+            if (player2Rec.IntersectsWith(enemyRec))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
 
