@@ -29,20 +29,25 @@ namespace Summitive_2D_game
         List<Box> enemyLeft = new List<Box>();
         List<Box> enemyRight = new List<Box>();
 
-        //TODO - Variables used to draw the enemies
+        //Variables used to draw the enemies
         int randomYLeft;
         int randomYRight;
+        int enemySizeX = 10;
+        int enemySizeY = 2;
+
+        //On Screen variables
+        int player1Score = 0;
+        int player2Score = 0;
 
         //Player 1 values
         Box player1;
-
 
         //Player 2 values
         Box player2;
 
         //Create a counter variable
         int counter;
-        
+
 
         public GameScreen()
         {
@@ -57,16 +62,16 @@ namespace Summitive_2D_game
             randomYRight = randgen.Next(1, 391);
             randomYLeft = randgen.Next(1, 391);
 
-            Box one = new Box(whiteBrush, 4, randomYLeft, 10, 2);
+            Box one = new Box(whiteBrush, 4, randomYLeft, enemySizeX, enemySizeY);
             enemyLeft.Add(one);
 
-            Box two = new Box(whiteBrush, this.Width, randomYRight, 10, 2);
+            Box two = new Box(whiteBrush, this.Width, randomYRight, enemySizeX, enemySizeY);
             enemyRight.Add(two);
 
             player1 = new Box(whiteBrush, 200, 400, 4, 10);
             player2 = new Box(whiteBrush, 600, 400, 4, 10);
 
-       
+
 
         }
 
@@ -143,10 +148,10 @@ namespace Summitive_2D_game
             {
 
 
-                Box Left = new Box(whiteBrush, 4, randomYLeft, 10, 2);
+                Box Left = new Box(whiteBrush, 4, randomYLeft, enemySizeX, enemySizeY);
                 enemyLeft.Add(Left);
 
-                Box Right = new Box(whiteBrush, this.Width, randomYRight, 10, 2);
+                Box Right = new Box(whiteBrush, this.Width, randomYRight, enemySizeX, enemySizeY);
                 enemyRight.Add(Right);
 
                 counter = 0;
@@ -194,27 +199,36 @@ namespace Summitive_2D_game
                 }
             }
 
+            //TODO - Check for player 1 scoring, if so add to player1Score
+
+
+            //TODO - Check for player 2 scoring, if so add to player2Score
+
             Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+           // Graphics g = this.CreateGraphics();
+
+
             //Draw Enemies on the screen
-            foreach (Box l in enemyLeft)
+            foreach (Box l in enemyLeft.Union(enemyRight))
             {
                 e.Graphics.FillRectangle(l.boxBrush, l.x, l.y, l.sizeX, l.sizeY);
             }
 
-            foreach (Box r in enemyRight)
-            {
-                e.Graphics.FillRectangle(r.boxBrush, r.x, r.y, r.sizeX, r.sizeY);
-            }
-
             //Draw Player1 to the screen
-            
-            e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY);
-                
-            
+            PointF[] player1Points = new PointF[3];
+            player1Points[0] = new PointF(200, 400);
+            player1Points[1] = new PointF(190, 420);
+            player1Points[2] = new PointF(210, 420);
+
+            e.Graphics.FillPolygon(whiteBrush, player1Points);
+
+            //e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY);
+
+
             //Draw Player2 to the screen
             e.Graphics.FillRectangle(player2.boxBrush, player2.x, player2.y, player2.sizeX, player2.sizeY);
         }
