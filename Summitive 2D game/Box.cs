@@ -12,6 +12,8 @@ namespace Summitive_2D_game
         public SolidBrush boxBrush = new SolidBrush(Color.White);
         public int x, y, sizeX, sizeY;
 
+        public PointF[] playerPoints = new PointF[3];
+
         public Box (SolidBrush _boxBrush, int _x, int _y, int _sizeX, int _sizeY)
         {
             x = _x;
@@ -19,6 +21,10 @@ namespace Summitive_2D_game
             sizeX = _sizeX;
             sizeY = _sizeY;
             boxBrush = _boxBrush;
+
+            playerPoints[0] = new PointF(10 + x, 0 + y);
+            playerPoints[1] = new PointF(0 + x, 20 + y);
+            playerPoints[2] = new PointF(20 + x, 20 + y);
         }
 
        
@@ -41,14 +47,18 @@ namespace Summitive_2D_game
             //Movement of the players depending what button is pressed
             if (direction == "Up")
             {
-                //y = y - 3;
-                Form1.Y = Form1.Y - 3;
+                y = y - 3;
+                //Form1.Y = Form1.Y - 3;
             }
 
             if (direction == "Down")
             {
                 y = y + 3;
             }
+
+            playerPoints[0] = new PointF(10 + x, 0 + y);
+            playerPoints[1] = new PointF(0 + x, 20 + y);
+            playerPoints[2] = new PointF(20 + x, 20 + y);
         }
 
         //TODO - Need a method for collision between the players and the enemies

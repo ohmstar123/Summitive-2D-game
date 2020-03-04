@@ -23,6 +23,7 @@ namespace Summitive_2D_game
 
         //Brushes to draw with
         SolidBrush whiteBrush = new SolidBrush(Color.White);
+        Pen whitePen = new Pen(Color.White);
 
 
         //Create two lists for enemies coming from the right and the left
@@ -69,9 +70,9 @@ namespace Summitive_2D_game
             Box two = new Box(whiteBrush, this.Width, randomYRight, enemySizeX, enemySizeY);
             enemyRight.Add(two);
 
-            player1 = new Box(whiteBrush, 200, 400, 4, 10);
+            player1 = new Box(whiteBrush, 200, 400, 10, 20);
 
-            player2 = new Box(whiteBrush, 600, 400, 4, 10);
+            player2 = new Box(whiteBrush, 600, 400, 10, 20);
 
 
 
@@ -138,7 +139,7 @@ namespace Summitive_2D_game
             {
                 enemyRight.RemoveAt(0);
             }
-
+            
             if (enemyLeft[0].x > this.Width)
             {
                 enemyLeft.RemoveAt(0);
@@ -146,7 +147,7 @@ namespace Summitive_2D_game
 
             //add new box if it is time
             counter++;
-            if (counter == 5)
+            if (counter == 100)
             {
 
 
@@ -187,7 +188,7 @@ namespace Summitive_2D_game
             {
                 if (enemy1.Collision1(player1))
                 {
-                    player1 = new Box(whiteBrush, 200, 400, 4, 10);
+                    player1 = new Box(whiteBrush, 200, 400, 10, 20);
                 }
             }
 
@@ -197,14 +198,27 @@ namespace Summitive_2D_game
             {
                 if (enemy2.Collision2(player2))
                 {
-                    player2 = new Box(whiteBrush, 600, 400, 4, 10);
+                    player2 = new Box(whiteBrush, 600, 400, 10, 20);
                 }
             }
 
-            //TODO - Check for player 1 scoring, if so add to player1Score
+            //Check for player 1 scoring, if so add to player1Score
+            if (player1.y <= -20)
+            {
+                player1Score++;
+                player1.y = this.Height - 20;
+                player1PointsLabel.Text = player1Score + "";
+            }
 
+            //Check for player 2 scoring, if so add to player2Score
+            if (player2.y <= -20)
+            {
+                player2Score++;
+                player2.y = this.Height - 20;
+                player2PointsLabel.Text = player1Score + "";
+            }
 
-            //TODO - Check for player 2 scoring, if so add to player2Score
+            //TODO - add to another counter int to determine how fast the clock winds down
 
             Refresh();
         }
@@ -222,18 +236,17 @@ namespace Summitive_2D_game
 
             //Draw Player1 to the screen
 
-            PointF[] player1Points = new PointF[3];
-            player1Points[0] = new PointF(200, 400 + Form1.Y);
-            player1Points[1] = new PointF(190, 420 + Form1.Y);
-            player1Points[2] = new PointF(210, 420 + Form1.Y);
+            e.Graphics.FillPolygon(whiteBrush, player1.playerPoints);
 
-            e.Graphics.FillPolygon(whiteBrush, player1Points);
-
-            //e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY); Very Old 
 
 
             //Draw Player2 to the screen
-            e.Graphics.FillRectangle(player2.boxBrush, player2.x, player2.y, player2.sizeX, player2.sizeY);
+            e.Graphics.FillPolygon(whiteBrush, player2.playerPoints);
+
+            //Draw rectangle in the center of the screen
+            e.Graphics.DrawRectangle(whitePen, this.Width / 2 - 5, 0, 5, this.Height);
+
+            //TODO - Draw a fill rectangle within the rectangle, which will go down over time to indicate time
         }
     }
 }
