@@ -12,7 +12,7 @@ namespace Summitive_2D_game
 {
     public partial class Form1 : Form
     {
-        
+        public static int Y = 0;
 
 
         public Form1()

@@ -21,6 +21,8 @@ namespace Summitive_2D_game
             boxBrush = _boxBrush;
         }
 
+       
+
         public void FallRight()
         {
             //Make the enemies fall right
@@ -39,7 +41,8 @@ namespace Summitive_2D_game
             //Movement of the players depending what button is pressed
             if (direction == "Up")
             {
-                y = y - 3;
+                //y = y - 3;
+                Form1.Y = Form1.Y - 3;
             }
 
             if (direction == "Down")

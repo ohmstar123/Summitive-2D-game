@@ -41,6 +41,7 @@ namespace Summitive_2D_game
 
         //Player 1 values
         Box player1;
+        
 
         //Player 2 values
         Box player2;
@@ -69,6 +70,7 @@ namespace Summitive_2D_game
             enemyRight.Add(two);
 
             player1 = new Box(whiteBrush, 200, 400, 4, 10);
+
             player2 = new Box(whiteBrush, 600, 400, 4, 10);
 
 
@@ -219,14 +221,15 @@ namespace Summitive_2D_game
             }
 
             //Draw Player1 to the screen
+
             PointF[] player1Points = new PointF[3];
-            player1Points[0] = new PointF(200, 400);
-            player1Points[1] = new PointF(190, 420);
-            player1Points[2] = new PointF(210, 420);
+            player1Points[0] = new PointF(200, 400 + Form1.Y);
+            player1Points[1] = new PointF(190, 420 + Form1.Y);
+            player1Points[2] = new PointF(210, 420 + Form1.Y);
 
             e.Graphics.FillPolygon(whiteBrush, player1Points);
 
-            //e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY);
+            //e.Graphics.FillRectangle(player1.boxBrush, player1.x, player1.y, player1.sizeX, player1.sizeY); Very Old 
 
 
             //Draw Player2 to the screen
