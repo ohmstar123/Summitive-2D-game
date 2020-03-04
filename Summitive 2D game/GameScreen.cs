@@ -49,6 +49,8 @@ namespace Summitive_2D_game
 
         //Create a counter variable
         int counter;
+        int gameCounter;
+        int heightCounter;
 
 
         public GameScreen()
@@ -147,7 +149,7 @@ namespace Summitive_2D_game
 
             //add new box if it is time
             counter++;
-            if (counter == 100)
+            if (counter == 6)
             {
 
 
@@ -210,16 +212,41 @@ namespace Summitive_2D_game
                 player1PointsLabel.Text = player1Score + "";
             }
 
+            if (player1.y >= this.Height + 20)
+            {
+                player1.y = this.Height + 20;
+            }
+
             //Check for player 2 scoring, if so add to player2Score
             if (player2.y <= -20)
             {
                 player2Score++;
                 player2.y = this.Height - 20;
-                player2PointsLabel.Text = player1Score + "";
+                player2PointsLabel.Text = player2Score + "";
             }
 
-            //TODO - add to another counter int to determine how fast the clock winds down
+            if (player2.y >= this.Height + 20)
+            {
+                player2.y = this.Height + 20;
+            }
 
+            //Increase gameCounter 
+
+            gameCounter++;
+
+            //add to another counter int to determine how fast the clock winds down
+            if (gameCounter == 15)
+            {
+                heightCounter++;
+                gameCounter = 0;
+            }
+
+            //Check if the heightCounter = the height of the screen, if so, display the winner
+            if (heightCounter == this.Height)
+            {
+                //TODO - switch screen to the gameover screen 
+                //TODO - Create the gameover screen
+            }
             Refresh();
         }
 
@@ -247,6 +274,10 @@ namespace Summitive_2D_game
             e.Graphics.DrawRectangle(whitePen, this.Width / 2 - 5, 0, 5, this.Height);
 
             //TODO - Draw a fill rectangle within the rectangle, which will go down over time to indicate time
+            e.Graphics.FillRectangle(whiteBrush, this.Width / 2 - 5, heightCounter, 5, this.Height);
+
+            //When gameCounter = 1000, decrease the height of the rectangle
+            
         }
     }
 }
