@@ -57,6 +57,7 @@ namespace Summitive_2D_game
 
         public void OnStart()
         {
+            Cursor.Hide();
             //Get game start values
             randomYRight = randgen.Next(1, 391);
             randomYLeft = randgen.Next(1, 391);
