@@ -44,8 +44,11 @@ namespace Summitive_2D_game
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            //End the application
-            Application.Exit();
+            //Go back to the main screen
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
         }
     }
 }
