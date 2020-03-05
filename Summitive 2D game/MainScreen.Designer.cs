@@ -68,7 +68,7 @@
             this.exitButton.Location = new System.Drawing.Point(502, 487);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(211, 69);
-            this.exitButton.TabIndex = 2;
+            this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -82,7 +82,7 @@
             this.controlsButton.Location = new System.Drawing.Point(502, 363);
             this.controlsButton.Name = "controlsButton";
             this.controlsButton.Size = new System.Drawing.Size(211, 69);
-            this.controlsButton.TabIndex = 3;
+            this.controlsButton.TabIndex = 2;
             this.controlsButton.Text = "Controls";
             this.controlsButton.UseVisualStyleBackColor = true;
             this.controlsButton.Click += new System.EventHandler(this.controlsButton_Click);

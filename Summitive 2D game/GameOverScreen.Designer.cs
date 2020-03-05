@@ -53,7 +53,7 @@
             this.playButton.Location = new System.Drawing.Point(503, 319);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(211, 69);
-            this.playButton.TabIndex = 2;
+            this.playButton.TabIndex = 1;
             this.playButton.Text = "Play Again";
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
@@ -67,7 +67,7 @@
             this.exitButton.Location = new System.Drawing.Point(503, 447);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(211, 69);
-            this.exitButton.TabIndex = 3;
+            this.exitButton.TabIndex = 2;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);

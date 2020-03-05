@@ -116,6 +116,7 @@ namespace Summitive_2D_game
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
+            this.Focus();
             //Create a random y value for the enemies
             randomYLeft = randgen.Next(1, 391);
             randomYRight = randgen.Next(1, 391);

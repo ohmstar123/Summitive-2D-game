@@ -49,6 +49,7 @@ namespace Summitive_2D_game
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
             f.Controls.Add(ms);
+            ms.Focus();
         }
     }
 }
