@@ -80,6 +80,7 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.winnerLabel);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "GameOverScreen";
             this.Size = new System.Drawing.Size(1225, 719);
             this.ResumeLayout(false);
