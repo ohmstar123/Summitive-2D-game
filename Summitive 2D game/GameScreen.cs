@@ -36,10 +36,6 @@ namespace Summitive_2D_game
         int enemySizeX = 10;
         int enemySizeY = 2;
 
-        //On Screen variables
-        int player1Score = 0;
-        int player2Score = 0;
-
         //Player 1 values
         Box player1;
         
@@ -51,7 +47,6 @@ namespace Summitive_2D_game
         int counter;
         int gameCounter;
         int heightCounter;
-
 
         public GameScreen()
         {
@@ -149,7 +144,7 @@ namespace Summitive_2D_game
 
             //add new box if it is time
             counter++;
-            if (counter == 6)
+            if (counter == 200)
             {
 
 
@@ -207,9 +202,9 @@ namespace Summitive_2D_game
             //Check for player 1 scoring, if so add to player1Score
             if (player1.y <= -20)
             {
-                player1Score++;
+                Form1.player1Score++;
                 player1.y = this.Height - 20;
-                player1PointsLabel.Text = player1Score + "";
+                player1PointsLabel.Text = Form1.player1Score + "";
             }
 
             if (player1.y >= this.Height + 20)
@@ -220,9 +215,9 @@ namespace Summitive_2D_game
             //Check for player 2 scoring, if so add to player2Score
             if (player2.y <= -20)
             {
-                player2Score++;
+                Form1.player2Score++;
                 player2.y = this.Height - 20;
-                player2PointsLabel.Text = player2Score + "";
+                player2PointsLabel.Text = Form1.player2Score + "";
             }
 
             if (player2.y >= this.Height + 20)
@@ -235,7 +230,7 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 15)
+            if (gameCounter == 1)
             {
                 heightCounter++;
                 gameCounter = 0;
@@ -244,17 +239,17 @@ namespace Summitive_2D_game
             //Check if the heightCounter = the height of the screen, if so, display the winner
             if (heightCounter == this.Height)
             {
-                //TODO - switch screen to the gameover screen 
-                //TODO - Create the gameover screen
+                //switch screen to the gameover screen 
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                GameOverScreen gos = new GameOverScreen();
+                f.Controls.Add(gos);
             }
             Refresh();
         }
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-           // Graphics g = this.CreateGraphics();
-
-
             //Draw Enemies on the screen
             foreach (Box l in enemyLeft.Union(enemyRight))
             {
@@ -262,10 +257,7 @@ namespace Summitive_2D_game
             }
 
             //Draw Player1 to the screen
-
             e.Graphics.FillPolygon(whiteBrush, player1.playerPoints);
-
-
 
             //Draw Player2 to the screen
             e.Graphics.FillPolygon(whiteBrush, player2.playerPoints);
@@ -273,10 +265,8 @@ namespace Summitive_2D_game
             //Draw rectangle in the center of the screen
             e.Graphics.DrawRectangle(whitePen, this.Width / 2 - 5, 0, 5, this.Height);
 
-            //TODO - Draw a fill rectangle within the rectangle, which will go down over time to indicate time
+            //Draw a fill rectangle within the rectangle, which will go down over time to indicate time
             e.Graphics.FillRectangle(whiteBrush, this.Width / 2 - 5, heightCounter, 5, this.Height);
-
-            //When gameCounter = 1000, decrease the height of the rectangle
             
         }
     }

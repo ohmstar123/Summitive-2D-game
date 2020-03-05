@@ -12,8 +12,8 @@ namespace Summitive_2D_game
 {
     public partial class Form1 : Form
     {
-        public static int Y = 0;
-
+        public static int player1Score;
+        public static int player2Score;
 
         public Form1()
         {
@@ -21,8 +21,8 @@ namespace Summitive_2D_game
 
 
 
-            GameScreen gs = new GameScreen();
-            this.Controls.Add(gs);
+            MainScreen ms = new MainScreen();
+            this.Controls.Add(ms);
 
 
 

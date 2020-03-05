@@ -10,25 +10,36 @@ using System.Windows.Forms;
 
 namespace Summitive_2D_game
 {
-    public partial class MainScreen : UserControl
+    public partial class GameOverScreen : UserControl
     {
-        public MainScreen()
+        public GameOverScreen()
         {
             InitializeComponent();
+
+            if (Form1.player1Score > Form1.player2Score)
+            {
+                winnerLabel.Text = "Player1 Wins";
+            }
+            else if (Form1.player1Score < Form1.player2Score)
+            {
+                winnerLabel.Text = "Player2 Wins";
+            }
+            else
+            {
+                winnerLabel.Text = "       It's A Tie";
+            }
         }
 
         private void playButton_Click(object sender, EventArgs e)
         {
-            //Begin the GameScreen
+            //Begin the game again and reset the variables
+            Form1.player1Score = 0;
+            Form1.player2Score = 0;
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             GameScreen gs = new GameScreen();
             f.Controls.Add(gs);
-        }
-
-        private void controlsButton_Click(object sender, EventArgs e)
-        {
-            //TODO - Add a controls screen 
         }
 
         private void exitButton_Click(object sender, EventArgs e)
