@@ -16,7 +16,6 @@ namespace Summitive_2D_game
         public MainScreen()
         {
             InitializeComponent();
-            this.Location = new Point((this.Width - this.Width) / 2, (this.Height - this.Height) / 2);
         }
        
         private void playButton_Click(object sender, EventArgs e)
@@ -26,7 +25,7 @@ namespace Summitive_2D_game
             f.Controls.Remove(this);
             GameScreen gs = new GameScreen();
             f.Controls.Add(gs);
-            gs.Location = new Point((f.Width - f.Width) / 2, (f.Height - f.Height) / 2);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
         }
 
         private void controlsButton_Click(object sender, EventArgs e)

@@ -12,6 +12,9 @@ namespace Summitive_2D_game
 {
     public partial class GameScreen : UserControl
     {
+        //Pause button
+        
+
         //Player2 controls 
         Boolean upArrowDown, downArrowDown;
 
@@ -92,6 +95,9 @@ namespace Summitive_2D_game
                 case Keys.S:
                     sKeyDown = true;
                     break;
+                case Keys.Escape:
+                    Form1.escapeDown = true;
+                    break;
             }
         }
 
@@ -110,6 +116,9 @@ namespace Summitive_2D_game
                     break;
                 case Keys.S:
                     sKeyDown = false;
+                    break;
+                case Keys.Escape:
+                    Form1.escapeDown = false;
                     break;
             }
         }
@@ -179,6 +188,23 @@ namespace Summitive_2D_game
             if (sKeyDown)
             {
                 player1.Move("Down");
+            }
+
+            //Enter the pause screen
+            if (Form1.escapeDown)
+            {
+                gameLoop.Enabled= false;
+                Form1.counter = true; 
+                Form f = this.FindForm();
+                //f.Controls.Remove(this);
+                PauseScreen ps = new PauseScreen();
+                f.Controls.Add(ps);
+
+            }
+            
+            if (Form1.counter == false)
+            {
+                gameLoop.Enabled = true;
             }
 
 
