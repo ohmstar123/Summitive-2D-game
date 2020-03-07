@@ -23,9 +23,10 @@ namespace Summitive_2D_game
             //Begin the GameScreen
             Form f = this.FindForm();
             f.Controls.Remove(this);
-            GameScreen gs = new GameScreen();
-            f.Controls.Add(gs);
-            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
+            DifficultyScreen ds = new DifficultyScreen();
+            f.Controls.Add(ds);
+            ds.Location = new Point((f.Width - ds.Width) / 2, (f.Height - ds.Height) / 2);
+            ds.Focus();
         }
 
         private void controlsButton_Click(object sender, EventArgs e)

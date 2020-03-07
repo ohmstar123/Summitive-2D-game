@@ -14,6 +14,7 @@ namespace Summitive_2D_game
     {
         public static int player1Score;
         public static int player2Score;
+        public static int difficulty;
 
         public Form1()
         {

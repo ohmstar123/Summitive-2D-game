@@ -21,7 +21,7 @@ namespace Summitive_2D_game
         //Player1 controls
         Boolean wKeyDown, sKeyDown;
 
-        //TODO - Set up the random number generator for locations of enemies later on
+        //Set up the random number generator for locations of enemies later on
         Random randgen = new Random();
 
         //Brushes to draw with
@@ -178,7 +178,7 @@ namespace Summitive_2D_game
 
             //add new box if it is time
             counter++;
-            if (counter == 7)
+            if (counter == Form1.difficulty)
             {
 
 
@@ -272,7 +272,7 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 1)
+            if (gameCounter == 7)
             {
                 heightCounter++;
                 gameCounter = 0;
@@ -281,6 +281,8 @@ namespace Summitive_2D_game
             //Check if the heightCounter = the height of the screen, if so, display the winner
             if (heightCounter == this.Height)
             {
+                //stop the gameloop
+                gameLoop.Enabled = false;
                 //switch screen to the gameover screen 
                 Form f = this.FindForm();
                 f.Controls.Remove(this);

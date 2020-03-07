@@ -61,7 +61,7 @@ namespace Summitive_2D_game
             playerPoints[2] = new PointF(20 + x, 20 + y);
         }
 
-        //TODO - Need a method for collision between the players and the enemies
+        //Need a method for collision between the players and the enemies
         public Boolean Collision1(Box player1)
         {
             Rectangle player1Rec = new Rectangle(player1.x, player1.y, player1.sizeX, player1.sizeY);
@@ -91,6 +91,7 @@ namespace Summitive_2D_game
                 return false;
             }
         }
+
 
 
 
