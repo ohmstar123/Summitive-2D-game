@@ -13,7 +13,8 @@ namespace Summitive_2D_game
     public partial class GameScreen : UserControl
     {
         //Pause button
-        
+        Boolean escapeDown;
+        Boolean downReset;
 
         //Player2 controls 
         Boolean upArrowDown, downArrowDown;
@@ -96,7 +97,7 @@ namespace Summitive_2D_game
                     sKeyDown = true;
                     break;
                 case Keys.Escape:
-                    Form1.escapeDown = true;
+                    escapeDown = true;
                     break;
             }
         }
@@ -118,13 +119,32 @@ namespace Summitive_2D_game
                     sKeyDown = false;
                     break;
                 case Keys.Escape:
-                    Form1.escapeDown = false;
+                    escapeDown = false;
                     break;
             }
         }
 
+        private void continueButton_Click(object sender, EventArgs e)
+        {
+            gameLoop.Enabled = true;
+            continueButton.Visible = false;
+            exitButton.Visible = false;
+            pauseBackGround.Visible = false;
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            MainScreen ms = new MainScreen();
+            f.Controls.Add(ms);
+            ms.Focus();
+        }
+
         private void gameLoop_Tick(object sender, EventArgs e)
         {
+            downReset = true;
+
             this.Focus();
             //Create a random y value for the enemies
             randomYLeft = randgen.Next(1, 391);
@@ -155,7 +175,7 @@ namespace Summitive_2D_game
 
             //add new box if it is time
             counter++;
-            if (counter == 200)
+            if (counter == 7)
             {
 
 
@@ -173,12 +193,12 @@ namespace Summitive_2D_game
             {
                 player2.Move("Up");
             }
-
+            
             if (downArrowDown)
             {
                 player2.Move("Down");
             }
-
+            
             //Move player2 Up and Down
             if (wKeyDown)
             {
@@ -191,22 +211,13 @@ namespace Summitive_2D_game
             }
 
             //Enter the pause screen
-            if (Form1.escapeDown)
+            if (escapeDown)
             {
-                gameLoop.Enabled= false;
-                Form1.counter = true; 
-                Form f = this.FindForm();
-                //f.Controls.Remove(this);
-                PauseScreen ps = new PauseScreen();
-                f.Controls.Add(ps);
-
+                gameLoop.Enabled = false;
+                continueButton.Visible = true;
+                exitButton.Visible = true;
+                pauseBackGround.Visible = true;
             }
-            
-            if (Form1.counter == false)
-            {
-                gameLoop.Enabled = true;
-            }
-
 
             //Check for collision between player1 and enemies
             foreach (Box enemy1 in enemyLeft.Union(enemyRight))
@@ -258,7 +269,7 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 1)
+            if (gameCounter == 7)
             {
                 heightCounter++;
                 gameCounter = 0;

@@ -14,8 +14,6 @@ namespace Summitive_2D_game
     {
         public static int player1Score;
         public static int player2Score;
-        public static Boolean escapeDown;
-        public static Boolean counter;
 
         public Form1()
         {
@@ -25,7 +23,7 @@ namespace Summitive_2D_game
 
             MainScreen ms = new MainScreen();
             this.Controls.Add(ms);
-            ms.Location = new Point((ms.Width - ms.Width) / 2, (ms.Height - ms.Height) / 2);
+            ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
 
 
 

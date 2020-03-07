@@ -32,6 +32,9 @@
             this.gameLoop = new System.Windows.Forms.Timer(this.components);
             this.player1PointsLabel = new System.Windows.Forms.Label();
             this.player2PointsLabel = new System.Windows.Forms.Label();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.continueButton = new System.Windows.Forms.Button();
+            this.pauseBackGround = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameLoop
@@ -62,13 +65,55 @@
             this.player2PointsLabel.TabIndex = 1;
             this.player2PointsLabel.Text = "0";
             // 
+            // exitButton
+            // 
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.ForeColor = System.Drawing.Color.White;
+            this.exitButton.Location = new System.Drawing.Point(507, 389);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(211, 69);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Visible = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // continueButton
+            // 
+            this.continueButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.continueButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.continueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.continueButton.ForeColor = System.Drawing.Color.White;
+            this.continueButton.Location = new System.Drawing.Point(507, 261);
+            this.continueButton.Name = "continueButton";
+            this.continueButton.Size = new System.Drawing.Size(211, 69);
+            this.continueButton.TabIndex = 1;
+            this.continueButton.Text = "Continue";
+            this.continueButton.UseVisualStyleBackColor = true;
+            this.continueButton.Visible = false;
+            this.continueButton.Click += new System.EventHandler(this.continueButton_Click);
+            // 
+            // pauseBackGround
+            // 
+            this.pauseBackGround.BackColor = System.Drawing.Color.Black;
+            this.pauseBackGround.Location = new System.Drawing.Point(475, 212);
+            this.pauseBackGround.Name = "pauseBackGround";
+            this.pauseBackGround.Size = new System.Drawing.Size(277, 296);
+            this.pauseBackGround.TabIndex = 4;
+            this.pauseBackGround.Visible = false;
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.continueButton);
             this.Controls.Add(this.player2PointsLabel);
             this.Controls.Add(this.player1PointsLabel);
+            this.Controls.Add(this.pauseBackGround);
             this.DoubleBuffered = true;
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1225, 719);
@@ -85,5 +130,8 @@
         private System.Windows.Forms.Timer gameLoop;
         private System.Windows.Forms.Label player1PointsLabel;
         private System.Windows.Forms.Label player2PointsLabel;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button continueButton;
+        private System.Windows.Forms.Label pauseBackGround;
     }
 }
