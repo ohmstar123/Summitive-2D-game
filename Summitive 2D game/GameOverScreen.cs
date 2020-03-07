@@ -40,16 +40,21 @@ namespace Summitive_2D_game
             f.Controls.Remove(this);
             GameScreen gs = new GameScreen();
             f.Controls.Add(gs);
+            gs.Location = new Point((f.Width - gs.Width) / 2, (f.Height - gs.Height) / 2);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            //Go back to the main screen
+            //Go back to the main screen and reset score variables
+            Form1.player1Score = 0;
+            Form1.player2Score = 0;
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
             f.Controls.Add(ms);
             ms.Focus();
+            ms.Location = new Point((f.Width - ms.Width) / 2, (f.Height - ms.Height) / 2);
         }
     }
 }

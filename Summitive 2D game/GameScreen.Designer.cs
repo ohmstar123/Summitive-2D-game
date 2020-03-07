@@ -35,6 +35,8 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.continueButton = new System.Windows.Forms.Button();
             this.pauseBackGround = new System.Windows.Forms.Label();
+            this.player1ShowLabel = new System.Windows.Forms.Label();
+            this.player2ShowLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameLoop
@@ -104,11 +106,35 @@
             this.pauseBackGround.TabIndex = 4;
             this.pauseBackGround.Visible = false;
             // 
+            // player1ShowLabel
+            // 
+            this.player1ShowLabel.AutoSize = true;
+            this.player1ShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player1ShowLabel.ForeColor = System.Drawing.Color.White;
+            this.player1ShowLabel.Location = new System.Drawing.Point(3, 0);
+            this.player1ShowLabel.Name = "player1ShowLabel";
+            this.player1ShowLabel.Size = new System.Drawing.Size(100, 29);
+            this.player1ShowLabel.TabIndex = 5;
+            this.player1ShowLabel.Text = "Player 1";
+            // 
+            // player2ShowLabel
+            // 
+            this.player2ShowLabel.AutoSize = true;
+            this.player2ShowLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.player2ShowLabel.ForeColor = System.Drawing.Color.White;
+            this.player2ShowLabel.Location = new System.Drawing.Point(1122, 0);
+            this.player2ShowLabel.Name = "player2ShowLabel";
+            this.player2ShowLabel.Size = new System.Drawing.Size(100, 29);
+            this.player2ShowLabel.TabIndex = 6;
+            this.player2ShowLabel.Text = "Player 2";
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.player2ShowLabel);
+            this.Controls.Add(this.player1ShowLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.continueButton);
             this.Controls.Add(this.player2PointsLabel);
@@ -133,5 +159,7 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button continueButton;
         private System.Windows.Forms.Label pauseBackGround;
+        private System.Windows.Forms.Label player1ShowLabel;
+        private System.Windows.Forms.Label player2ShowLabel;
     }
 }

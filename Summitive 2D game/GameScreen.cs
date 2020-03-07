@@ -14,7 +14,6 @@ namespace Summitive_2D_game
     {
         //Pause button
         Boolean escapeDown;
-        Boolean downReset;
 
         //Player2 controls 
         Boolean upArrowDown, downArrowDown;
@@ -130,21 +129,25 @@ namespace Summitive_2D_game
             continueButton.Visible = false;
             exitButton.Visible = false;
             pauseBackGround.Visible = false;
+            upArrowDown = false;
+            downArrowDown = false;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            Form1.player1Score = 0;
+            Form1.player2Score = 0;
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
             MainScreen ms = new MainScreen();
             f.Controls.Add(ms);
+            ms.Location = new Point((f.Width - ms.Width) / 2, (f.Height - ms.Height) / 2);
             ms.Focus();
         }
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
-            downReset = true;
-
             this.Focus();
             //Create a random y value for the enemies
             randomYLeft = randgen.Next(1, 391);
@@ -269,7 +272,7 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 7)
+            if (gameCounter == 1)
             {
                 heightCounter++;
                 gameCounter = 0;
@@ -283,6 +286,7 @@ namespace Summitive_2D_game
                 f.Controls.Remove(this);
                 GameOverScreen gos = new GameOverScreen();
                 f.Controls.Add(gos);
+                gos.Location = new Point((f.Width - gos.Width) / 2, (f.Height - gos.Height) / 2);
             }
             Refresh();
         }

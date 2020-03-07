@@ -23,7 +23,7 @@ namespace Summitive_2D_game
 
             MainScreen ms = new MainScreen();
             this.Controls.Add(ms);
-            ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
+            ms.Location = new Point((this.Width - ms.Width) / 2 + 350, (this.Height + ms.Height) / 2 - 181);
 
 
 
