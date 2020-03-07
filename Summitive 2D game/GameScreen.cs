@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Summitive_2D_game
 {
     public partial class GameScreen : UserControl
     {
+        //Sound for pause screen
+        SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
+
         //Pause button
         Boolean escapeDown;
 
@@ -60,7 +64,7 @@ namespace Summitive_2D_game
 
         public void OnStart()
         {
-            Cursor.Hide();
+            
             //Get game start values
             randomYRight = randgen.Next(1, 391);
             randomYLeft = randgen.Next(1, 391);
@@ -125,6 +129,8 @@ namespace Summitive_2D_game
 
         private void continueButton_Click(object sender, EventArgs e)
         {
+            player.Play();
+
             gameLoop.Enabled = true;
             continueButton.Visible = false;
             exitButton.Visible = false;
@@ -135,6 +141,8 @@ namespace Summitive_2D_game
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            player.Play();
+
             Form1.player1Score = 0;
             Form1.player2Score = 0;
 
@@ -194,28 +202,30 @@ namespace Summitive_2D_game
             //Move player1 Up and Down
             if (upArrowDown)
             {
-                player2.Move("Up");
+                player1.Move("Up");
             }
             
             if (downArrowDown)
             {
-                player2.Move("Down");
+                player1.Move("Down");
             }
             
             //Move player2 Up and Down
             if (wKeyDown)
             {
-                player1.Move("Up");
+                player2.Move("Up");
             }
 
             if (sKeyDown)
             {
-                player1.Move("Down");
+                player2.Move("Down");
             }
 
             //Enter the pause screen
             if (escapeDown)
             {
+                player.Play();
+
                 gameLoop.Enabled = false;
                 continueButton.Visible = true;
                 exitButton.Visible = true;
@@ -272,7 +282,7 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 7)
+            if (gameCounter == 1)
             {
                 heightCounter++;
                 gameCounter = 0;

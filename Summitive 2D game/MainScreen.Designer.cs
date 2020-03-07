@@ -75,8 +75,8 @@
             // 
             // controlsButton
             // 
-            this.controlsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.controlsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Maroon;
+            this.controlsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.controlsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.controlsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.controlsButton.ForeColor = System.Drawing.Color.White;
             this.controlsButton.Location = new System.Drawing.Point(502, 363);

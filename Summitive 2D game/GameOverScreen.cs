@@ -7,25 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Summitive_2D_game
 {
     public partial class GameOverScreen : UserControl
     {
+        SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
+
         public GameOverScreen()
         {
             InitializeComponent();
+            SoundPlayer playerWin = new SoundPlayer(Properties.Resources.WinSound);
 
+            //Check to see who won
             if (Form1.player1Score > Form1.player2Score)
             {
+                playerWin.Play();
                 winnerLabel.Text = "Player1 Wins";
             }
             else if (Form1.player1Score < Form1.player2Score)
             {
+                playerWin.Play();
                 winnerLabel.Text = "Player2 Wins";
             }
             else
             {
+                playerWin.Play();
                 winnerLabel.Text = "       It's A Tie";
             }
         }
@@ -33,6 +41,8 @@ namespace Summitive_2D_game
         private void playButton_Click(object sender, EventArgs e)
         {
             //Begin the game again and reset the variables
+            player.Play();
+
             Form1.player1Score = 0;
             Form1.player2Score = 0;
 
@@ -46,6 +56,8 @@ namespace Summitive_2D_game
         private void exitButton_Click(object sender, EventArgs e)
         {
             //Go back to the main screen and reset score variables
+            player.Play();
+
             Form1.player1Score = 0;
             Form1.player2Score = 0;
 

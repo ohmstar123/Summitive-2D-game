@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Summitive_2D_game
 {
@@ -19,7 +20,7 @@ namespace Summitive_2D_game
         public Form1()
         {
             InitializeComponent();
-
+            Cursor.Hide();
 
 
             MainScreen ms = new MainScreen();
