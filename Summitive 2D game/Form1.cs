@@ -21,16 +21,13 @@ namespace Summitive_2D_game
         {
             InitializeComponent();
             Cursor.Hide();
-
-
-            MainScreen ms = new MainScreen();
-            this.Controls.Add(ms);
-            ms.Location = new Point((this.Width - ms.Width) / 2 + 350, (this.Height + ms.Height) / 2 - 181);
-
-
-
         }
 
- 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            MainScreen ms = new MainScreen();
+            this.Controls.Add(ms);
+            ms.Location = new Point((this.Width - ms.Width) / 2 , (this.Height - ms.Height) / 2);
+        }
     }
 }
