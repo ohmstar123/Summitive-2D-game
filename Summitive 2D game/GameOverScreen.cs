@@ -13,6 +13,7 @@ namespace Summitive_2D_game
 {
     public partial class GameOverScreen : UserControl
     {
+        //Sounds
         SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
 
         public GameOverScreen()
@@ -41,7 +42,7 @@ namespace Summitive_2D_game
         private void playButton_Click(object sender, EventArgs e)
         {
             //Begin the game again and reset the variables
-            player.Play();
+            player.PlaySync();
 
             Form1.player1Score = 0;
             Form1.player2Score = 0;
@@ -56,7 +57,7 @@ namespace Summitive_2D_game
         private void exitButton_Click(object sender, EventArgs e)
         {
             //Go back to the main screen and reset score variables
-            player.Play();
+            player.PlaySync();
 
             Form1.player1Score = 0;
             Form1.player2Score = 0;

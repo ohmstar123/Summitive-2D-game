@@ -13,8 +13,13 @@ namespace Summitive_2D_game
 {
     public partial class GameScreen : UserControl
     {
-        //Sound for pause screen
+        //Sound for the game
         SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
+        SoundPlayer gameSound = new SoundPlayer(Properties.Resources.GameMusic);
+        SoundPlayer intense = new SoundPlayer(Properties.Resources.IntenseMidMusic);
+
+        //Boolean to check if intense music still plays after pause is pressed
+        Boolean intenseCheck = false;
 
         //Pause button
         Boolean escapeDown;
@@ -64,7 +69,8 @@ namespace Summitive_2D_game
 
         public void OnStart()
         {
-            
+            gameSound.PlayLooping();
+
             //Get game start values
             randomYRight = randgen.Next(1, 391);
             randomYLeft = randgen.Next(1, 391);
@@ -129,7 +135,16 @@ namespace Summitive_2D_game
 
         private void continueButton_Click(object sender, EventArgs e)
         {
-            player.Play();
+            player.PlaySync();
+
+            if (intenseCheck == true)
+            {
+                intense.PlayLooping();
+            }
+            else
+            {
+                gameSound.PlayLooping();
+            }
 
             gameLoop.Enabled = true;
             continueButton.Visible = false;
@@ -141,7 +156,7 @@ namespace Summitive_2D_game
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            player.Play();
+            player.PlaySync();
 
             Form1.player1Score = 0;
             Form1.player2Score = 0;
@@ -157,6 +172,9 @@ namespace Summitive_2D_game
         private void gameLoop_Tick(object sender, EventArgs e)
         {
             this.Focus();
+
+
+
             //Create a random y value for the enemies
             randomYLeft = randgen.Next(1, 391);
             randomYRight = randgen.Next(1, 391);
@@ -282,10 +300,17 @@ namespace Summitive_2D_game
             gameCounter++;
 
             //add to another counter int to determine how fast the clock winds down
-            if (gameCounter == 1)
+            if (gameCounter == 7)
             {
                 heightCounter++;
                 gameCounter = 0;
+            }
+
+            if (heightCounter == 350)
+            {
+                intense.PlayLooping();
+                intenseCheck = true;
+
             }
 
             //Check if the heightCounter = the height of the screen, if so, display the winner

@@ -9,6 +9,8 @@ namespace Summitive_2D_game
 {
     class Box
     {
+        
+
         public SolidBrush boxBrush = new SolidBrush(Color.White);
         public int x, y, sizeX, sizeY;
 
@@ -91,6 +93,7 @@ namespace Summitive_2D_game
                 return false;
             }
         }
+
 
 
 

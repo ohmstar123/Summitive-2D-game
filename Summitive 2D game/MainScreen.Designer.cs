@@ -32,6 +32,7 @@
             this.playButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.controlsButton = new System.Windows.Forms.Button();
+            this.creatorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -87,11 +88,23 @@
             this.controlsButton.UseVisualStyleBackColor = true;
             this.controlsButton.Click += new System.EventHandler(this.controlsButton_Click);
             // 
+            // creatorLabel
+            // 
+            this.creatorLabel.AutoSize = true;
+            this.creatorLabel.Font = new System.Drawing.Font("Showcard Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creatorLabel.ForeColor = System.Drawing.Color.White;
+            this.creatorLabel.Location = new System.Drawing.Point(3, 684);
+            this.creatorLabel.Name = "creatorLabel";
+            this.creatorLabel.Size = new System.Drawing.Size(307, 35);
+            this.creatorLabel.TabIndex = 4;
+            this.creatorLabel.Text = "Made By: Ohm Patel";
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
+            this.Controls.Add(this.creatorLabel);
             this.Controls.Add(this.controlsButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button controlsButton;
+        private System.Windows.Forms.Label creatorLabel;
     }
 }

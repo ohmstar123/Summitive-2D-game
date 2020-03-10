@@ -13,19 +13,22 @@ namespace Summitive_2D_game
 {
     public partial class MainScreen : UserControl
     {
+        //Sounds
         SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
+        SoundPlayer MenuPlayer = new SoundPlayer(Properties.Resources.MenuMusic);
         
-        
+
+
         public MainScreen()
         {
             InitializeComponent();
-            
+            MenuPlayer.PlayLooping();
         }
        
         private void playButton_Click(object sender, EventArgs e)
         {
             //Begin the GameScreen
-            player.Play();
+            player.PlaySync();
 
             Form f = this.FindForm();
             f.Controls.Remove(this);
@@ -38,7 +41,7 @@ namespace Summitive_2D_game
         private void controlsButton_Click(object sender, EventArgs e)
         {
             //Add a controls screen 
-            player.Play();
+            player.PlaySync();
 
             Form f = this.FindForm();
             f.Controls.Remove(this);

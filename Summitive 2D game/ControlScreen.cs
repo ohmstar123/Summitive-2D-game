@@ -16,14 +16,18 @@ namespace Summitive_2D_game
         public ControlScreen()
         {
             InitializeComponent();
+            SoundPlayer MenuPlayer = new SoundPlayer(Properties.Resources.MenuMusic);
+            MenuPlayer.PlayLooping();
+
             discriptionLabel.Text = "Score the most points within the time limit by making it \n across " +
                 "the field of flying bullets ";
+
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
-            player.Play();
+            player.PlaySync();
 
             Form f = this.FindForm();
             f.Controls.Remove(this);

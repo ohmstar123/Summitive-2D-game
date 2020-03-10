@@ -132,5 +132,14 @@
   <ItemGroup>
     <None Include="Resources\SelectSound.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntenseMidMusic.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MenuMusic.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

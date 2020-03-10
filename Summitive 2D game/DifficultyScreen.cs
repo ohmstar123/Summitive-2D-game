@@ -13,17 +13,20 @@ namespace Summitive_2D_game
 {
     public partial class DifficultyScreen : UserControl
     {
+        //Sounds
         SoundPlayer player = new SoundPlayer(Properties.Resources.SelectSound);
+        SoundPlayer MenuPlayer = new SoundPlayer(Properties.Resources.MenuMusic);
 
         public DifficultyScreen()
         {
             InitializeComponent();
+            MenuPlayer.PlayLooping();
         }
 
         private void easyButton_Click(object sender, EventArgs e)
         {
             //Change the difficulty variable and bring up the game screen
-            player.Play();
+            player.PlaySync();
 
             Form1.difficulty = 11;
 
@@ -37,7 +40,7 @@ namespace Summitive_2D_game
         private void mediumButton_Click(object sender, EventArgs e)
         {
             //Change the difficulty variable and bring up the game screen
-            player.Play();
+            player.PlaySync();
 
             Form1.difficulty = 7;
 
@@ -51,7 +54,7 @@ namespace Summitive_2D_game
         private void Button_Click(object sender, EventArgs e)
         {
             //Change the difficulty variable and bring up the game screen
-            player.Play();
+            player.PlaySync();
 
             Form1.difficulty = 5;
 
@@ -65,7 +68,7 @@ namespace Summitive_2D_game
         private void impossibleButton_Click(object sender, EventArgs e)
         {
             //Change the difficulty variable and bring up the game screen
-            player.Play();
+            player.PlaySync();
 
             Form1.difficulty = 2;
 
@@ -79,7 +82,7 @@ namespace Summitive_2D_game
         private void mainMenuButton_Click(object sender, EventArgs e)
         {
             //Return back to the main screen
-            player.Play();
+            player.PlaySync();
 
             Form f = this.FindForm();
             f.Controls.Remove(this);
